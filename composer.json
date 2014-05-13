@@ -1,0 +1,19 @@
+{
+    "name": "vendor/breeze-server-demo",
+    "description": "Description of project BreezeServerDemo.",
+    "authors": [
+        {
+            "name": "mrsafraz",
+            "email": "mr.safraz@gmail.com"
+        }
+    ],
+    "require": {
+        "jms/serializer": "0.16.0",
+        "doctrine/orm": "v2.4.2",
+        "adrotec/breeze.server.php": "dev-master"
+
+    },
+    "autoload": {
+        "psr-0": {"": "src/"}
+    }
+}
