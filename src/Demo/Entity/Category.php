@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\Entity;
+namespace Demo\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -68,10 +68,10 @@ class Category
     /**
      * Add products
      *
-     * @param \Acme\Entity\Product $products
+     * @param \Demo\Entity\Product $products
      * @return Category
      */
-    public function addProduct(\Acme\Entity\Product $products)
+    public function addProduct(\Demo\Entity\Product $products)
     {
         $this->products[] = $products;
 
@@ -81,9 +81,9 @@ class Category
     /**
      * Remove products
      *
-     * @param \Acme\Entity\Product $products
+     * @param \Demo\Entity\Product $products
      */
-    public function removeProduct(\Acme\Entity\Product $products)
+    public function removeProduct(\Demo\Entity\Product $products)
     {
         $this->products->removeElement($products);
     }
@@ -96,5 +96,33 @@ class Category
     public function getProducts()
     {
         return $this->products;
+    }
+    /**
+     * @var string
+     */
+    private $description;
+
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Category
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

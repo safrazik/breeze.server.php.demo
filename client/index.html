@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/app.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Breeze Demo</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Demo</a></li>
+            <li><a href="#" target="_blank">Source</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+        
+<section class="products">
+    <!--    <div class="page-header">
+            <h1>Product Catalogue</h1>
+        </div>-->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="page-header">
+                <h2>Products</h2>
+            </div>
+
+            <div class="form-group">
+                <label>Select Category</label>
+                <select class="form-control" data-bind="options: categories, optionsText: 'name', value: activeCategory">
+                </select>
+                <br>
+                <button class="btn btn-danger btn-xs btn-block" data-bind="click: removeActiveCategory">Remove Selected Category</button>
+            </div>
+
+            <div class="well">
+                <h4>New Category</h4>
+                <div data-bind="with: newCategory">
+                    <div class="form-group">
+                        <input class="form-control" type="text" data-bind="value: name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" data-bind="value: description" placeholder="Description"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block" data-bind="click: saveChanges">Save Changes</button>
+
+        </div>
+        <div class="col-md-8">
+            <div data-bind="if: activeCategory">
+                <div class="page-header">
+                    <h2 data-bind="text: activeCategory().name"></h2>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ko foreach: activeCategory().products -->
+                        <tr>
+                            <td data-bind="text: id"></td>
+                            <td><input class="form-control" type="text" data-bind="value: name"></td>
+                            <td><input class="form-control" type="number" data-bind="value: price"></td>
+                            <td><input class="form-control" type="text" data-bind="value: description"></td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" data-bind="click: $parent.removeProduct">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- /ko -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <button class="btn btn-success btn-sm btn-block" data-bind="click: addProduct">Add New Product</button>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+        
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/knockout-3.1.0.js"></script>
+    <script src="js/q.js"></script>
+    <script src="js/breeze.min.js"></script>
+    <script src="js/DataService.js"></script>
+    <script src="js/ViewModel.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
