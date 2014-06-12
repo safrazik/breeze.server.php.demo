@@ -1,5 +1,7 @@
 # Breeze PHP Server Demo
 
+This is a demonstration application that makes use of the [Breeze PHP Server](https://github.com/adrotec/breeze.server.php) library
+
 ### How to run the demo locally
 
 - clone the repo and place the files into web accessible directory
