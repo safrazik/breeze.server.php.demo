@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d4a3f0a725d6ed403acbc4fa38a00a22",
+    "hash": "5d331669781734fc308be1076940aa49",
     "packages": [
         {
             "name": "adrotec/breeze.server.php",
-            "version": "dev-master",
+            "version": "1.0.0-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adrotec/breeze.server.php.git",
-                "reference": "5e839ed244a90e599387b072f4df0e0ca628a671"
+                "reference": "e4b069b28740a33d7ed554fb428a29fd8a2e5211"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adrotec/breeze.server.php/zipball/5e839ed244a90e599387b072f4df0e0ca628a671",
-                "reference": "5e839ed244a90e599387b072f4df0e0ca628a671",
+                "url": "https://api.github.com/repos/adrotec/breeze.server.php/zipball/e4b069b28740a33d7ed554fb428a29fd8a2e5211",
+                "reference": "e4b069b28740a33d7ed554fb428a29fd8a2e5211",
                 "shasum": ""
             },
             "require": {
@@ -50,7 +50,7 @@
                 "odata",
                 "rest"
             ],
-            "time": "2014-07-22 16:26:41"
+            "time": "2014-08-20 14:33:42"
         },
         {
             "name": "doctrine/annotations",
@@ -1144,7 +1144,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "symfony/validator": 20,
-        "adrotec/breeze.server.php": 20
+        "adrotec/breeze.server.php": 10
     },
     "prefer-stable": false,
     "platform": {
