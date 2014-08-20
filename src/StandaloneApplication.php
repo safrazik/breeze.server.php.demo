@@ -2,9 +2,12 @@
 
 // Demo implementation
 
-use Adrotec\BreezeJs\Serializer\MetadataInterceptor;
+use Adrotec\BreezeJs\MetadataInterceptor;
+use Adrotec\BreezeJs\Serializer\MetadataInterceptor as SerializerInterceptor;
+use Adrotec\BreezeJs\Validator\ValidatorInterceptor;
 use Adrotec\BreezeJs\Doctrine\ORM\Dispatcher;
 use Adrotec\BreezeJs\Serializer\SerializerBuilder;
+use Symfony\Component\Validator\ValidatorBuilder;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
@@ -13,9 +16,10 @@ class StandaloneApplication {
     const REQUEST_METHOD_GET = 'GET';
     const REQUEST_METHOD_POST = 'POST';
     const REQUEST_METHOD_OPTIONS = 'OPTIONS';
-    
+
     private $classes;
     private $serializer;
+    private $validator;
     private $entityManager;
     private $debug = false;
     private $dispatcher;
@@ -35,7 +39,7 @@ class StandaloneApplication {
     public function getRequestContent() {
         return file_get_contents('php://input');
     }
-    
+
     public function getRequestMethod(){
         return $_SERVER['REQUEST_METHOD'];
     }
@@ -60,6 +64,23 @@ class StandaloneApplication {
         $this->serializer = $serializer;
     }
 
+    public function setValidator($validator) {
+        $this->validator = $validator;
+    }
+
+    public function getValidator() {
+        if ($this->validator === null) {
+            $path = strtr(__DIR__ . '/../config/validation.xml', '/', DIRECTORY_SEPARATOR);
+            if (file_exists($path)) {
+                $paths = array($path);
+                $builder = new ValidatorBuilder();
+                $builder->addXmlMappings($paths);
+                $this->validator = $builder->getValidator();
+            }
+        }
+        return $this->validator;
+    }
+
     public function getEntityManager() {
         return $this->entityManager;
     }
@@ -70,7 +91,13 @@ class StandaloneApplication {
 
     public function getDispatcher() {
         if ($this->dispatcher === null) {
-            $interceptor = new MetadataInterceptor($this->getSerializer());
+            $interceptor = new MetadataInterceptor();
+            $interceptor->add(new SerializerInterceptor($this->getSerializer()));
+            $validator = $this->getValidator();
+            if ($validator) {
+                $interceptor->add(new ValidatorInterceptor($validator));
+            }
+
             // limit the api to certain classes. If you want to expose all classes 
             // from the entity manager, $classes parameter should be null
             $classes = $this->getClasses();
@@ -99,11 +126,11 @@ class StandaloneApplication {
         $response = $this->getDispatcher()->getQueryResults($class, $params);
         return $this->sendResponse($response);
     }
-    
+
     public function enableCors($cors = true){
         $this->cors = $cors;
     }
-    
+
     protected function sendCorsHeaders(){
         // allow cross origin requests
         header('Access-Control-Allow-Origin: *');
@@ -119,7 +146,7 @@ class StandaloneApplication {
         if ($this->getRequestMethod() === self::REQUEST_METHOD_OPTIONS) {
             exit;
         }
-        
+
         if($this->entityManager === null){
             throw new \RuntimeException('EntityManager should be set before you run the application');
         }

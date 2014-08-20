@@ -55,8 +55,19 @@ var ViewModel = function(dataservice) {
         dataservice.saveChanges().then(function(data) {
             alert('success');
         }, function(error) {
-            alert('Save failed: ' + error);
-        })
+            console.log(error);
+            console.log(error.stack);
+            if(error.entityErrors){
+                for(var i = 0; i < error.entityErrors.length; i++){
+                    var e = error.entityErrors[i];
+                    alert((e.isServerError ? '(SERVER ERROR)' : '(CLIENT ERROR)') 
+                           + ' ' + e.errorMessage);
+                }
+            }
+            else {
+                alert('Save failed: ' + error);
+            }
+        });
     }
 
     self.activate = function(categoryId) {

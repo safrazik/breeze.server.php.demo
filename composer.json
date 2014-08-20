@@ -10,6 +10,8 @@
     "require": {
         "jms/serializer": "0.16.0",
         "doctrine/orm": "v2.4.2",
+        "symfony/config": "2.5.*",
+        "symfony/validator": "dev-master",
         "adrotec/breeze.server.php": "dev-master",
         "ext-sqlite3": "*",
         "ext-pdo_sqlite": "*"

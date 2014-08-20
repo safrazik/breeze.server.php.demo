@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Demo\Entity\Product">
+        <property name="name">
+            <constraint name="NotBlank" />
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">10</option>
+                <option name="minMessage">Product name must be at least {{ limit }} characters length</option>
+                <option name="maxMessage">Product name cannot be longer than {{ limit }} characters length</option>
+             </constraint>
+        </property>
+        <property name="price">
+            <constraint name="GreaterThan">
+                <option name="value">100</option>
+                <option name="message">Product price should be greater than {{ compared_value }}.</option>
+            </constraint>
+        </property>
+    </class>
+    
+    <class name="Demo\Entity\Category">
+        <property name="name">
+            <constraint name="NotBlank" />
+            <constraint name="Regex">
+                <option name="pattern">/^\w+/</option>
+                <option name="message">Category name can have only letters</option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>
