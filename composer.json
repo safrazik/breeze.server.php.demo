@@ -12,7 +12,7 @@
         "doctrine/orm": "v2.4.2",
         "symfony/config": "2.5.*",
         "symfony/validator": "dev-master",
-        "adrotec/breeze.server.php": "dev-master",
+        "adrotec/breeze.server.php": "1.0.0-beta",
         "ext-sqlite3": "*",
         "ext-pdo_sqlite": "*"
 
