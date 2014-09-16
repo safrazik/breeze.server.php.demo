@@ -1,6 +1,6 @@
 # Breeze PHP Server Demo
 
-This is a demonstration application that makes use of the [Breeze PHP Server](https://github.com/adrotec/breeze.server.php) library
+This is a minimal demonstration application that makes use of the [Breeze PHP Server](https://github.com/adrotec/breeze.server.php) library
 
 ### How to run the demo locally
 
@@ -14,3 +14,6 @@ This is a demonstration application that makes use of the [Breeze PHP Server](ht
 
 - http://breezedemo.herokuapp.com/client/index.html
 - Open developer tools in Chrome (Shortcut: F12) and go to `Network` tab to monitor the request and response from server
+
+## Featured Demo - [EmpDirectory sample application](https://github.com/adrotec/emp-directory)
+A full featured sample application is available at https://github.com/adrotec/emp-directory

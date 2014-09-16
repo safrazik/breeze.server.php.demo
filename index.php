@@ -1,29 +1,11 @@
 <?php
 
-try {
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    require_once 'bootstrap.php';
-
-    $app = new StandaloneApplication($isDevMode);
-
-    $classes = array(
-        // Resource name => Class name
-//    'Products' => 'Acme\Entity\Product',
-//    'Categories' => 'Acme\Entity\Category',
-        'Products' => 'Demo\Entity\Product',
-        'Categories' => 'Demo\Entity\Category',
-    );
-
-    $app->setClasses($classes);
+$app = require_once 'bootstrap.php';
 
 // allow cross origin request
-    $app->enableCors();
+$app->enableCors();
 
-    $app->setEntityManager($entityManager);
-
-    $app->run();
-} catch (\Exception $e) {
-    echo json_encode(array(
-        'error' => $e->getMessage(),
-    ));
-}
+$app->run();
