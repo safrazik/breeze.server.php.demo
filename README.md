@@ -1,3 +1,7 @@
+# Project Status:  🚨 Unmaintained 🚨
+
+This project is no longer maintained. We will not be accepting pull requests, addressing issues, nor making future releases.
+
 # Breeze PHP Server Demo
 
 This is a minimal demonstration application that makes use of the [Breeze PHP Server](https://github.com/adrotec/breeze.server.php) library
